@@ -1,0 +1,10 @@
+{
+  "apps": [{
+    "name": "Epal SSR",
+    "script": "dist/server.js",
+    "env": {
+      "NODE_ENV": "production",
+      "PORT": 4000
+    }
+  }]
+}

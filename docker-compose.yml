@@ -1,0 +1,11 @@
+version: '3'
+services:
+  epal:
+    image: mivkovic17/epal-frontend
+    container_name: epal-frontend
+    ports:
+    - "4000:4000"
+    links:
+    - redis
+  redis:
+    image: redis

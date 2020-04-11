@@ -1,7 +1,7 @@
 {
   "apps": [{
     "name": "Epal SSR",
-    "script": "dist/server.js",
+    "script": "dist/epal-frontend/server/main.js",
     "env": {
       "NODE_ENV": "production",
       "PORT": 4000

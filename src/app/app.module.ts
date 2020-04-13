@@ -7,6 +7,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer-component';
 import { TranslationsModule } from './shared/modules/translation.module';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpService } from './shared/services/http.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,9 @@ import { HttpClientModule } from '@angular/common/http';
     TranslationsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    HttpService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

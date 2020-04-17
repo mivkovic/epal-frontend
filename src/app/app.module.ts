@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer-component';
 import { HttpService } from './shared/services/http.service';
+import { AuthStore } from './store/auth/auth.store';
+import { AuthQuery } from './store/auth/auth.query';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { HttpService } from './shared/services/http.service';
     AuthModule
   ],
   providers: [
-    HttpService
+    HttpService,
+    AuthStore,
+    AuthQuery
   ],
   bootstrap: [AppComponent]
 })

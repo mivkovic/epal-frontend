@@ -1,4 +1,40 @@
 <div>
-  <input type="text">
-  <input type="text">
+    <div *ngIf="error">
+      {{ 'general.bad_credentionals' | translate }}
+    </div>  
+    <form
+    [formGroup]="loginForm"
+    (submit)="submit()"
+  >
+    <div>
+      <div>{{ 'general.email' | translate }}</div>
+      <input
+        [ngClass]="{ invalid: 
+          loginForm.get('email').touched &&
+          loginForm.get('email').errors?.required
+        }"
+        type="text"
+        formControlName="email"
+      />
+      <ng-container *ngIf="loginForm.get('email').touched">
+        <div *ngIf="loginForm.get('email').errors?.required">{{ 'error.required' | translate }}</div>
+      </ng-container>
+    </div>
+
+    <div>
+        <div>{{ 'general.password' | translate }}</div>
+        <input
+          [ngClass]="{ invalid: 
+            loginForm.get('password').touched &&
+            loginForm.get('password').errors?.required
+          }"
+          type="password"
+          formControlName="password"
+        />
+        <ng-container *ngIf="loginForm.get('password').touched">
+          <div *ngIf="loginForm.get('password').errors?.required">{{ 'error.required' | translate }}</div>
+        </ng-container>
+      </div>
+      <button>{{ 'general.login' | translate }}</button>
+  </form>
 </div>

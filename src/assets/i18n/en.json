@@ -7,6 +7,7 @@
   "general.confirmPassword": "Confirm password",
   "general.email": "Email",
   "general.birthday": "Birthday",
+  "general.bad_credentionals": "Bad credentionals",
   "error.required": "Field is required",
   "error.minlength3": "Min length is 3",
   "error.minlength8": "Min length is 8",

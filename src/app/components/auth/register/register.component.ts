@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { CustomValidator } from '../../../shared/validatior/custom-validator';
-import { HttpService } from '../../../shared/services/http.service';
+import { AuthService } from '../../../shared/services/auth.service';
 
 @Component({
   selector: 'register-component',
@@ -13,16 +13,9 @@ export class RegisterComponent{
 
   constructor(
     private _formBuilder: FormBuilder,
-    private _httpService: HttpService
+    private _authService: AuthService
   ) {
     this._createRegisterForm();
-  }
-
-  public submit() {
-    if (!this.registerForm.valid) {
-      return;
-    }
-    this._httpService.post('/api/v0/auth/register', this.registerForm.value).toPromise();
   }
 
   private _createRegisterForm() {
@@ -69,6 +62,14 @@ export class RegisterComponent{
       ],
     }, {
       validator: CustomValidator.passwordMatchValidator
-   })
+   });
+  }
+
+  public submit() {
+    if (!this.registerForm.valid) {
+      return;
+    }
+    
+    this._authService.register(this.registerForm.value).toPromise();
   }
 }

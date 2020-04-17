@@ -5,7 +5,7 @@ import { AuthComponent } from './auth.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { TranslationsModule } from '../../shared/modules/translation.module';
-import { HttpService } from '../../shared/services/http.service';
+import { AuthService } from '../../shared/services/auth.service';
 
 @NgModule({
   imports: [
@@ -20,7 +20,7 @@ import { HttpService } from '../../shared/services/http.service';
     AuthComponent
   ],
   providers: [
-    HttpService
+    AuthService
   ],
 })
 export class AuthModule { }

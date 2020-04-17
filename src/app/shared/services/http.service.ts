@@ -11,4 +11,8 @@ export class HttpService {
   public get(url) {
     return this._httpClient.get(`${API_URL}${url}`);
   }
+
+  public post(url, data) {
+    return this._httpClient.post(`${API_URL}${url}`, data);
+  }
 }

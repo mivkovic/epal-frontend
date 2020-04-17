@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ModalService } from '../../shared/services/modal.service';
-import { AuthComponent } from '../auth-modal/auth.component';
+import { AuthComponent } from '../auth/auth.component';
 
 @Component({
   selector: 'header-component',

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService } from '../../../shared/services/auth.service';
+import { ModalService } from '../../../shared/services/modal.service';
 
 @Component({
   selector: 'login-component',
@@ -13,7 +14,8 @@ export class LoginComponent {
 
   constructor(
     private _formBuilder: FormBuilder,
-    private _authService: AuthService
+    private _authService: AuthService,
+    private _modalService: ModalService
   ) {
     this._createLoginForm();
   }
@@ -47,6 +49,7 @@ export class LoginComponent {
         this._authService.updateAuth(response, response.access);
         this._authService.setAuthToken(response.access);
         this._authService.authChange.next(true);
+        this._modalService.close();
         this.error = null;
       },
       (err) => {

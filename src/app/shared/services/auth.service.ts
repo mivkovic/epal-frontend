@@ -39,6 +39,7 @@ export class AuthService {
     return this._httpService.post(this.ENDPOINTS.LOGOUT, {}).subscribe(response => {
       this.updateAuth(null, null);
       this.removeAuthToken();
+      this.authChange.next(false);
     })
   }
 
@@ -59,7 +60,7 @@ export class AuthService {
   }
 
   public setAuthToken(token) {
-    this._header.set('Authorization', token);
+    this._header.set('Authorization', `Bearer ${token}`);
     localStorage.setItem('token', token);
   }
 }

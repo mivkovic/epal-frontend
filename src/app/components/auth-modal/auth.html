@@ -1,0 +1,12 @@
+<div>
+    <div (click)="closeModal()">X</div>
+    <div>Logo</div>
+    <div>
+      <div (click)="changeType(LOGIN)">{{ 'general.login' | translate }}</div>
+      <div (click)="changeType(REGISTER)">{{ 'general.register' | translate }}</div>
+    </div>
+    <div>
+      <login-component *ngIf="currentType === LOGIN"></login-component>
+      <register-component *ngIf="currentType === REGISTER"></register-component>
+    </div>
+</div>

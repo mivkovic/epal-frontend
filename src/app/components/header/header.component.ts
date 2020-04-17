@@ -1,9 +1,19 @@
 import { Component } from '@angular/core';
+import { ModalService } from '../../shared/services/modal.service';
+import { AuthComponent } from '../auth-modal/auth.component';
 
 @Component({
   selector: 'header-component',
   templateUrl: './header.html'
 })
 export class HeaderComponent {
-  constructor() {}
+  constructor(
+    private _modalService: ModalService
+  ) {}
+
+  public openAuthModal() {
+    this._modalService.open(
+      AuthComponent
+    )
+  }
 }

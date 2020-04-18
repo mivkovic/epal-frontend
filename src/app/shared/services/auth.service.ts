@@ -4,6 +4,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { AuthStore } from '../../store/auth/auth.store';
 import { AuthQuery } from '../../store/auth/auth.query';
 import { Subject } from 'rxjs';
+import { LocalstorageService } from './localstorage.service';
 
 @Injectable()
 export class AuthService {
@@ -61,16 +62,16 @@ export class AuthService {
 
   private removeAuthToken() {
     this._header.delete('Authorization');
-    localStorage.removeItem('token');
+    LocalstorageService.removeItem('token');
   }
 
   public setAuthToken(token) {
     this._header.set('Authorization', `Bearer ${token}`);
-    localStorage.setItem('token', token);
+    LocalstorageService.setItem('token', token);
   }
 
   public setDefaultUserTokenIfExist() {
-    const token = localStorage.getItem('token');
+    const token = LocalstorageService.getItem('token');
 
     if (!token) {
       return;

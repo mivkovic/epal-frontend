@@ -4,6 +4,7 @@ import { AuthComponent } from '../auth/auth.component';
 import { AuthService } from '../../shared/services/auth.service';
 import { Subscription } from 'rxjs';
 import each from 'lodash/each';
+import { LocalstorageService } from '../../shared/services/localstorage.service';
 
 @Component({
   selector: 'app-header-component',
@@ -29,7 +30,7 @@ export class HeaderComponent implements OnInit, OnDestroy{
   }
 
   public checkIsUserLogIn() {
-    this.isLoggedUser = !!localStorage.getItem('token');
+    this.isLoggedUser = !!LocalstorageService.getItem('token');
   }
 
   public openAuthModal() {

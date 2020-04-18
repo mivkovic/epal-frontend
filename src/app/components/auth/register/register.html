@@ -1,0 +1,93 @@
+<div>
+  <form
+    [formGroup]="registerForm"
+    (submit)="submit()"
+  >
+    <div>
+      <div>{{ 'general.username' | translate }}</div>
+      <input
+        [ngClass]="{ invalid: 
+          registerForm.get('username').touched &&
+          registerForm.get('username').errors?.required &&
+          registerForm.get('username').errors?.minlength
+        }"
+        type="text"
+        formControlName="username"
+      />
+      <ng-container *ngIf="registerForm.get('username').touched">
+        <div *ngIf="registerForm.get('username').errors?.required">{{ 'error.required' | translate }}</div>
+        <div *ngIf="registerForm.get('username').errors?.minlength">{{ 'error.minlength3' | translate }}</div>
+      </ng-container>
+    </div>
+
+    <div>
+      <div>{{ 'general.password' | translate }}</div>
+      <input
+        [ngClass]="{ invalid: 
+          registerForm.get('password').touched &&
+          registerForm.get('password').errors?.required &&
+          registerForm.get('password').errors?.minlength && 
+          registerForm.get('password').errors?.hasNumber &&
+          registerForm.get('password').errors?.hasCapitalCase &&
+          registerForm.get('password').errors?.hasSmallCase
+        }"
+        type="password"
+        formControlName="password"
+      />
+      <ng-container *ngIf="registerForm.get('password').touched">
+        <div *ngIf="registerForm.get('password').errors?.required">{{ 'error.required' | translate }}</div>
+        <div *ngIf="registerForm.get('password').errors?.minlength">{{ 'error.minlength8' }}</div>
+        <div *ngIf="
+          registerForm.get('password').errors?.hasNumber ||
+          registerForm.get('password').errors?.hasCapitalCase ||
+          registerForm.get('password').errors?.hasSmallCase
+        ">{{ 'error.password' | translate }}</div>
+      </ng-container>
+    </div>
+
+    <div>
+      <div>{{ 'general.confirmPassword' | translate }}</div>
+      <input
+        type="password"
+        formControlName="confirmPassword"
+      />
+      <ng-container *ngIf="registerForm.get('password').touched">
+          <div *ngIf="registerForm.get('password').errors?.noPassswordMatch">{{ 'error.noMatchPassword' | translate }}</div>
+      </ng-container>
+    </div>
+
+    <div>
+      <div>{{ 'general.email' | translate }}</div>
+      <input
+        [ngClass]="{ invalid: 
+          registerForm.get('email').touched &&
+          registerForm.get('email').errors?.required &&
+          registerForm.get('email').errors?.email
+        }"
+        type="text"
+        formControlName="email"
+      />
+      <ng-container *ngIf="registerForm.get('email').touched">
+        <div *ngIf="registerForm.get('email').errors?.required">{{ 'error.required' | translate }}</div>
+        <div *ngIf="registerForm.get('username').errors?.email">{{ 'error.email' | translate }}</div>
+      </ng-container>
+    </div>
+
+    <div>
+      <div>{{ 'general.birthday' | translate }}</div>
+      <input
+        [ngClass]="{ invalid: 
+          registerForm.get('birthday').touched &&
+          registerForm.get('birthday').errors?.required
+        }"
+        type="date"
+        formControlName="birthday"
+      />
+      <ng-container *ngIf="registerForm.get('birthday').touched">
+        <div *ngIf="registerForm.get('birthday').errors?.required">{{ 'error.required' | translate }}</div>
+      </ng-container>
+    </div>
+
+    <button>{{ 'general.register' | translate }}</button>
+  </form>
+</div>

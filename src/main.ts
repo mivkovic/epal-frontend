@@ -4,7 +4,14 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 
-if (environment.production) {
+import { allEnv } from 'all-env';
+import each from 'lodash/each';
+
+each(allEnv, globalVarKey  => {
+  window[globalVarKey] = environment[globalVarKey] ? environment[globalVarKey] : null;
+});
+
+if (environment.ENVIRONMENT === 'production') {
   enableProdMode();
 }
 

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { homeRouting } from './home.routing';
 import { CommonModule } from '@angular/common';
-import { HomePage } from './home.component';
+import { HomePageComponent } from './home.component';
 
 @NgModule({
   imports: [
@@ -10,7 +10,7 @@ import { HomePage } from './home.component';
     CommonModule,
   ],
   declarations: [
-    HomePage
+    HomePageComponent
   ],
   providers: [],
 })

@@ -1,1 +1,24 @@
-<h1>Header</h1>
+<div>
+  <div>
+    <input type="text" />
+    <button>Search</button>
+  </div>
+
+  <div>
+    Social media icons
+  </div>
+
+  <div *ngIf="!isLoggedUser" (click)="openAuthModal()">Login</div>
+
+  <div *ngIf="isLoggedUser">
+    <span>User name</span>
+    <div>
+      Icon
+      <div (click)="logout()">
+        Logout
+      </div>
+    </div>
+    <div>Notifications</div>
+  </div>
+  
+</div>

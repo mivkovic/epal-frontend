@@ -42,7 +42,7 @@ export class LoginComponent {
   public submit() {
     if (!this.loginForm.valid) {
       this.validateAllFormFields(this.loginForm);
-      
+
       return;
     }
 

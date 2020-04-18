@@ -8,7 +8,7 @@ import {
 import { LocalizationService } from './shared/services/localization.service';
 import { ModalService } from './shared/services/modal.service';
 import { Subscription } from 'rxjs';
-import each from 'lodash/each';
+import forEach from 'lodash/forEach';
 
 @Component({
   selector: 'app-root',
@@ -60,6 +60,6 @@ export class AppComponent implements OnDestroy{
   }
 
   ngOnDestroy() {
-    each(this._subscriptions, s => s.unsubscribe());
+    forEach(this._subscriptions, s => s.unsubscribe());
   }
 }

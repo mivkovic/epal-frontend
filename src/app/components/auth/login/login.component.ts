@@ -44,17 +44,12 @@ export class LoginComponent {
       return;
     }
     
-    this._authService.login(this.loginForm.value).subscribe(
-      (response: any) => {
-        this._authService.updateAuth(response, response.access);
-        this._authService.setAuthToken(response.access);
+    this._authService.login(this.loginForm.value).then(() => {
         this._authService.authChange.next(true);
         this._modalService.close();
         this.error = null;
-      },
-      (err) => {
+      }).catch(err => {
         this.error = err;
-      }
-    )
+      })
   }
 }

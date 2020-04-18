@@ -5,7 +5,6 @@ import { AuthComponent } from './auth.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { TranslationsModule } from '../../shared/modules/translation.module';
-import { AuthService } from '../../shared/services/auth.service';
 
 @NgModule({
   imports: [
@@ -18,9 +17,6 @@ import { AuthService } from '../../shared/services/auth.service';
     LoginComponent,
     RegisterComponent,
     AuthComponent
-  ],
-  providers: [
-    AuthService
   ],
 })
 export class AuthModule { }

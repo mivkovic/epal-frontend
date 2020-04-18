@@ -25,6 +25,7 @@ export class AuthService {
     private _authQuery: AuthQuery
   ) {
     this._header = new HttpHeaders()
+    this.setDefaultUserTokenIfExist();
   }
     
   public register(data) {
@@ -32,11 +33,15 @@ export class AuthService {
   }
 
   public login(data) {
-    return this._httpService.post(this.ENDPOINTS.LOGIN, data);
+    return this._httpService.post(this.ENDPOINTS.LOGIN, data)
+      .toPromise().then((response: any) => {
+        this.updateAuth(response, response.access);
+        this.setAuthToken(response.access);
+      });
   }
 
   public logout() {
-    return this._httpService.post(this.ENDPOINTS.LOGOUT, {}).subscribe(response => {
+    return this._httpService.post(this.ENDPOINTS.LOGOUT, {}).subscribe(() => {
       this.updateAuth(null, null);
       this.removeAuthToken();
       this.authChange.next(false);
@@ -62,5 +67,16 @@ export class AuthService {
   public setAuthToken(token) {
     this._header.set('Authorization', `Bearer ${token}`);
     localStorage.setItem('token', token);
+  }
+
+  public setDefaultUserTokenIfExist() {
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+      return;
+    }
+
+    this._header.set('Authorization', `Bearer ${token}`);
+
   }
 }

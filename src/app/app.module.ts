@@ -11,6 +11,7 @@ import { FooterComponent } from './components/footer/footer-component';
 import { HttpService } from './shared/services/http.service';
 import { AuthStore } from './store/auth/auth.store';
 import { AuthQuery } from './store/auth/auth.query';
+import { AuthService } from './shared/services/auth.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { AuthQuery } from './store/auth/auth.query';
   providers: [
     HttpService,
     AuthStore,
-    AuthQuery
+    AuthQuery,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

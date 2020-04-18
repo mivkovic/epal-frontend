@@ -21,10 +21,15 @@ export class HeaderComponent implements OnInit, OnDestroy{
 
   public ngOnInit() {
     this._subscribeToAuthChange();
+    this.checkIsUserLogIn();
   }
 
   public ngOnDestroy() {
     each(this._subscriptions, s => s.unsubscribe());
+  }
+
+  public checkIsUserLogIn() {
+    this.isLoggedUser = !!localStorage.getItem('token');
   }
   
   public openAuthModal() {

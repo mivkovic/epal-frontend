@@ -3,7 +3,7 @@ import { ModalService } from '../../shared/services/modal.service';
 import { AuthComponent } from '../auth/auth.component';
 import { AuthService } from '../../shared/services/auth.service';
 import { Subscription } from 'rxjs';
-import forEach from 'lodash/forEach';
+import { each } from 'lodash';
 import { LocalstorageService } from '../../shared/services/localstorage.service';
 
 @Component({
@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit, OnDestroy{
   }
 
   public ngOnDestroy() {
-    forEach(this._subscriptions, s => s.unsubscribe());
+    each(this._subscriptions, s => s.unsubscribe());
   }
 
   public checkIsUserLogIn() {

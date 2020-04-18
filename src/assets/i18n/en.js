@@ -1,4 +1,4 @@
-{
+export default {
   "general.epal": "Epal English",
   "general.login": "Login",
   "general.register": "Register",

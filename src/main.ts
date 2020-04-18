@@ -5,7 +5,7 @@ import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 
 import { allEnv } from 'all-env';
-import each from 'lodash/each';
+import { each } from 'lodash';
 
 each(allEnv, globalVarKey  => {
   window[globalVarKey] = environment[globalVarKey] ? environment[globalVarKey] : null;

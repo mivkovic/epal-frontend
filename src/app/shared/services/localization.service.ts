@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import * as en from '../../../assets/i18n/en.json';
+import * as en from '../../../assets/i18n/en.js';
 
 @Injectable()
 export class LocalizationService {
@@ -11,7 +11,7 @@ export class LocalizationService {
   ) {}
 
   public setInitTranslations() {
-    this.translate.setTranslation(this.defaultLocale, (en as any).default);
+    this.translate.setTranslation(this.defaultLocale, en);
     this.translate.use(this.defaultLocale);
   }
 }

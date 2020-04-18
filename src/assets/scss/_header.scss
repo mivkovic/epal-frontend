@@ -1,0 +1,122 @@
+.e-pal-header {
+ // margin: 3rem 2rem;                                                                                                 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $grey;
+  border-bottom: 2px solid $red;
+  padding: 1.5rem 5rem;
+
+  
+
+
+  &__search {
+
+    position: relative;
+
+    &-icon {
+      height: 2rem;
+      width: 2rem;
+      margin-left: 2rem;
+      fill: $grey-light;
+      position: absolute;
+      top: 2.7rem;
+      left: 1rem;
+      
+    }
+
+    &-field {
+      background-color: $grey-dark;
+      border: none;
+      border-radius: 5px;
+      height: 5rem;
+      width: 15vw;
+      margin: 1rem;
+      color: $grey-light;
+      font-size: 1.8rem;
+      padding-left: 5rem;
+      
+      
+  
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+  }  
+
+
+  &__media {
+    display: flex;
+  }
+
+  &__icons {
+
+  }
+
+  &__icon {
+    height: 3.5rem;
+    width: 3.5rem;
+    fill: $grey-light;
+    margin-right: 3rem;
+  }
+
+  &__btn {
+      background-color: $yellow;
+      color: $grey-dark;
+      height: 5rem;
+      width: 9rem;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.7rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      cursor: pointer;
+
+      &:focus {
+        outline: none;
+      }
+  }
+
+
+}
+
+.e-pal-header__user {
+  display: flex;
+  align-items: center;
+
+  &-name {
+    color: $grey-light;
+    margin-right: 2rem;
+    font-size: 1.5rem;
+    
+  }
+
+  &-img {
+    height: 4.5rem;
+    width: 4.5rem;
+    fill: $grey-light;
+    margin-right: 1rem;
+  }
+
+  &-logout {
+
+    align-self: flex-end;
+
+    &-icon {
+      height: 2rem;
+      width: 2rem;
+      fill: $grey-light;
+      cursor: pointer;
+    }
+  }
+
+  &-notifications {
+    height: 2rem;
+    width: 2rem;
+    fill: $grey-light;
+    margin-left: 3rem;
+  }
+
+}

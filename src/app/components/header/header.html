@@ -1,24 +1,57 @@
-<div>
-  <div>
-    <input type="text" />
-    <button>Search</button>
+<div class="e-pal-header">
+
+  <div class="e-pal-header__search">
+
+    <svg class="e-pal-header__search-icon">
+      <use xlink:href="../../assets/images/icons/sprite.svg#icon-search"></use>
+    </svg>
+
+    <input type="text" class="e-pal-header__search-field" placeholder="Search">
+    <button class="e-pal-header__btn">Search</button>
+
   </div>
 
-  <div>
-    Social media icons
-  </div>
-
-  <div *ngIf="!isLoggedUser" (click)="openAuthModal()">Login</div>
-
-  <div *ngIf="isLoggedUser">
-    <span>User name</span>
-    <div>
-      Icon
-      <div (click)="logout()">
-        Logout
-      </div>
+  <div  *ngIf="!isLoggedUser" class="e-pal-header__media">
+    
+    <div class="e-pal-header__icons">
+      <svg class="e-pal-header__icon">
+        <use xlink:href="../../assets/images/icons/sprite.svg#icon-youtube"></use>
+      </svg>
+  
+      <svg class="e-pal-header__icon">
+        <use xlink:href="../../assets/images/icons/sprite.svg#icon-facebook2"></use>
+      </svg>
+  
+      <svg class="e-pal-header__icon">
+        <use xlink:href="../../assets/images/icons/sprite.svg#icon-instagram"></use>
+      </svg>
     </div>
-    <div>Notifications</div>
+  
+    <button  (click)="openAuthModal()" class="e-pal-header__btn">Login</button>
+
+ </div>
+
+  
+
+  <div *ngIf="isLoggedUser" class="e-pal-header__user">
+    
+      <span class="e-pal-header__user-name">User name</span>
+
+      <svg class="e-pal-header__user-img">
+        <use xlink:href="../../assets/images/icons/sprite.svg#icon-user-circle-o"></use>
+      </svg>
+
+      <div (click)="logout()" class="e-pal-header__user-logout">
+        <svg class="e-pal-header__user-logout-icon">
+          <use xlink:href="../../assets/images/icons/sprite.svg#icon-chevron-thin-down"></use>
+        </svg>
+      </div>
+    
+      <svg class="e-pal-header__user-notifications">
+        <use xlink:href="../../assets/images/icons/sprite.svg#icon-bell"></use>
+      </svg>
+
   </div>
+
   
 </div>

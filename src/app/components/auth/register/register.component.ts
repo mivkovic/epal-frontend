@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { CustomValidator } from '../../../shared/validatior/custom-validator';
 import { AuthService } from '../../../shared/services/auth.service';
 
@@ -67,9 +67,22 @@ export class RegisterComponent{
 
   public submit() {
     if (!this.registerForm.valid) {
+      this.validateAllFormFields(this.registerForm);
+
       return;
     }
 
     this._authService.register(this.registerForm.value).toPromise();
+  }
+
+  public validateAllFormFields(formGroup) {
+    Object.keys(formGroup.controls).forEach(field => {
+      const control = formGroup.get(field);
+      if (control instanceof FormControl) {
+        control.markAsTouched({ onlySelf: true });
+      } else if (control instanceof FormGroup) {
+        this.validateAllFormFields(control);
+      }
+    });
   }
 }

@@ -1,12 +1,38 @@
-<div>
-    <div (click)="closeModal()">X</div>
-    <div>Logo</div>
-    <div>
-      <div (click)="changeType(LOGIN)">{{ 'general.login' | translate }}</div>
-      <div (click)="changeType(REGISTER)">{{ 'general.register' | translate }}</div>
+<div class="e-pal-modal-wrapper">
+  <div class="e-pal-auth-modal">
+    <svg (click)="closeModal()" class="e-pal-auth_modal_close">
+      <use xlink:href="../../../assets/images/icons/sprite.svg#icon-cross"></use>
+    </svg>
+
+    <div class="e-pal-auth-modal_logo">
+      <svg class="e-pal-auth-modal_logo-svg">
+        <use xlink:href="../../../assets/images/icons/sprite.svg#icon-image"></use>
+      </svg>
     </div>
-    <div>
-      <app-login-component *ngIf="currentType === LOGIN"></app-login-component>
-      <app-register-component *ngIf="currentType === REGISTER"></app-register-component>
+
+    <div class="e-pal-auth-modal_title">
+      <div
+        class="e-pal-auth-modal_title__item"
+        (click)="changeType(LOGIN)"
+        [ngClass]="{
+          'active': currentType === LOGIN
+        }"
+      >
+        {{ 'general.login' | translate }}
+      </div>
+      <div
+        class="e-pal-auth-modal_title__item" 
+        (click)="changeType(REGISTER)"
+        [ngClass]="{
+          'active': currentType === REGISTER
+        }"
+      >
+        {{ 'general.register' | translate }}
+      </div>
     </div>
+    <div class="e-pal-auth-modal_content">
+      <app-login-component class="e-pal-auth-modal" *ngIf="currentType === LOGIN"></app-login-component>
+      <app-register-component class="e-pal-auth-modal" *ngIf="currentType === REGISTER"></app-register-component>
+    </div>
+  </div>
 </div>

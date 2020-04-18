@@ -1,40 +1,40 @@
-<div>
-    <div *ngIf="error">
-      {{ 'general.bad_credentionals' | translate }}
-    </div>  
-    <form
-    [formGroup]="loginForm"
-    (submit)="submit()"
-  >
-    <div>
-      <div>{{ 'general.email' | translate }}</div>
-      <input
-        [ngClass]="{ invalid: 
-          loginForm.get('email').touched &&
-          loginForm.get('email').errors?.required
-        }"
-        type="text"
-        formControlName="email"
-      />
-      <ng-container *ngIf="loginForm.get('email').touched">
-        <div *ngIf="loginForm.get('email').errors?.required">{{ 'error.required' | translate }}</div>
-      </ng-container>
-    </div>
 
-    <div>
-        <div>{{ 'general.password' | translate }}</div>
-        <input
-          [ngClass]="{ invalid: 
-            loginForm.get('password').touched &&
-            loginForm.get('password').errors?.required
-          }"
-          type="password"
-          formControlName="password"
-        />
-        <ng-container *ngIf="loginForm.get('password').touched">
-          <div *ngIf="loginForm.get('password').errors?.required">{{ 'error.required' | translate }}</div>
-        </ng-container>
-      </div>
-      <button>{{ 'general.login' | translate }}</button>
-  </form>
+<form class="e-pal-auth-modal_form" [formGroup]="loginForm" (submit)="submit()">
+
+  <div class="e-pal-auth-modal_form_input">
+    <span>{{ 'general.email' | translate }}</span>
+    <input
+      [ngClass]="{ invalid: 
+        loginForm.get('email').touched &&
+        loginForm.get('email').errors?.required
+      }"
+      type="text"
+      formControlName="email"
+    />
+    <ng-container *ngIf="loginForm.get('email').touched">
+      <div class="input-invalid-msg" *ngIf="loginForm.get('email').errors?.required">{{ 'error.required' | translate }}</div>
+      <div class="input-invalid-msg" *ngIf="loginForm.get('email').errors?.email">{{ 'error.email' | translate }}</div>
+    </ng-container>
+  </div>
+
+  <div class="e-pal-auth-modal_form_input">
+    <span>{{ 'general.password' | translate }}</span>
+    <input
+      [ngClass]="{ invalid: 
+        loginForm.get('password').touched &&
+        loginForm.get('password').errors?.required
+      }"
+      type="password"
+      formControlName="password"
+    />
+    <ng-container *ngIf="loginForm.get('password').touched">
+      <div class="input-invalid-msg" *ngIf="loginForm.get('password').errors?.required">{{ 'error.required' | translate }}</div>
+    </ng-container>
+  </div>
+
+  <button class="e-pal-auth-submit-button" (click)="submit()">{{ 'general.login' | translate }}</button>
+</form>
+
+<div *ngIf="error" class="input-invalid-server">
+  {{ 'general.bad_credentionals' | translate }}
 </div>

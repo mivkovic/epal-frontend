@@ -1,93 +1,92 @@
-<div>
-  <form
-    [formGroup]="registerForm"
-    (submit)="submit()"
-  >
-    <div>
-      <div>{{ 'general.username' | translate }}</div>
-      <input
-        [ngClass]="{ invalid: 
-          registerForm.get('username').touched &&
-          registerForm.get('username').errors?.required &&
-          registerForm.get('username').errors?.minlength
-        }"
-        type="text"
-        formControlName="username"
-      />
-      <ng-container *ngIf="registerForm.get('username').touched">
-        <div *ngIf="registerForm.get('username').errors?.required">{{ 'error.required' | translate }}</div>
-        <div *ngIf="registerForm.get('username').errors?.minlength">{{ 'error.minlength3' | translate }}</div>
-      </ng-container>
-    </div>
+<form
+  class="e-pal-auth-modal_form"
+  [formGroup]="registerForm"
+  (submit)="submit()"
+>
+  <div class="e-pal-auth-modal_form_input">
+    <span>{{ 'general.username' | translate }}</span>
+    <input
+      [ngClass]="{ invalid: 
+        registerForm.get('username').touched &&
+        registerForm.get('username').errors?.required &&
+        registerForm.get('username').errors?.minlength
+      }"
+      type="text"
+      formControlName="username"
+    />
+    <ng-container *ngIf="registerForm.get('username').touched">
+      <div class="input-invalid-msg" *ngIf="registerForm.get('username').errors?.required">{{ 'error.required' | translate }}</div>
+      <div class="input-invalid-msg" *ngIf="registerForm.get('username').errors?.minlength">{{ 'error.minlength3' | translate }}</div>
+    </ng-container>
+  </div>
 
-    <div>
-      <div>{{ 'general.password' | translate }}</div>
-      <input
-        [ngClass]="{ invalid: 
-          registerForm.get('password').touched &&
-          registerForm.get('password').errors?.required &&
-          registerForm.get('password').errors?.minlength && 
-          registerForm.get('password').errors?.hasNumber &&
-          registerForm.get('password').errors?.hasCapitalCase &&
-          registerForm.get('password').errors?.hasSmallCase
-        }"
-        type="password"
-        formControlName="password"
-      />
-      <ng-container *ngIf="registerForm.get('password').touched">
-        <div *ngIf="registerForm.get('password').errors?.required">{{ 'error.required' | translate }}</div>
-        <div *ngIf="registerForm.get('password').errors?.minlength">{{ 'error.minlength8' }}</div>
-        <div *ngIf="
-          registerForm.get('password').errors?.hasNumber ||
-          registerForm.get('password').errors?.hasCapitalCase ||
-          registerForm.get('password').errors?.hasSmallCase
-        ">{{ 'error.password' | translate }}</div>
-      </ng-container>
-    </div>
+  <div class="e-pal-auth-modal_form_input">
+    <span>{{ 'general.password' | translate }}</span>
+    <input
+      [ngClass]="{ invalid: 
+        registerForm.get('password').touched &&
+        registerForm.get('password').errors?.required &&
+        registerForm.get('password').errors?.minlength && 
+        registerForm.get('password').errors?.hasNumber &&
+        registerForm.get('password').errors?.hasCapitalCase &&
+        registerForm.get('password').errors?.hasSmallCase
+      }"
+      type="password"
+      formControlName="password"
+    />
+    <ng-container *ngIf="registerForm.get('password').touched">
+      <div class="input-invalid-msg" *ngIf="registerForm.get('password').errors?.required">{{ 'error.required' | translate }}</div>
+      <div class="input-invalid-msg" *ngIf="registerForm.get('password').errors?.minlength">{{ 'error.minlength8' | translate }}</div>
+      <div class="input-invalid-msg" *ngIf="
+        registerForm.get('password').errors?.hasNumber ||
+        registerForm.get('password').errors?.hasCapitalCase ||
+        registerForm.get('password').errors?.hasSmallCase
+      ">{{ 'error.password' | translate }}</div>
+    </ng-container>
+  </div>
 
-    <div>
-      <div>{{ 'general.confirmPassword' | translate }}</div>
-      <input
-        type="password"
-        formControlName="confirmPassword"
-      />
-      <ng-container *ngIf="registerForm.get('password').touched">
-          <div *ngIf="registerForm.get('password').errors?.noPassswordMatch">{{ 'error.noMatchPassword' | translate }}</div>
-      </ng-container>
-    </div>
+  <div class="e-pal-auth-modal_form_input">
+    <span>{{ 'general.confirmPassword' | translate }}</span>
+    <input
+      type="password"
+      formControlName="confirmPassword"
+    />
+    <ng-container *ngIf="registerForm.get('password').touched">
+      <div class="input-invalid-msg" *ngIf="registerForm.get('password').errors?.noPassswordMatch">{{ 'error.noMatchPassword' | translate }}</div>
+    </ng-container>
+  </div>
 
-    <div>
-      <div>{{ 'general.email' | translate }}</div>
-      <input
-        [ngClass]="{ invalid: 
-          registerForm.get('email').touched &&
-          registerForm.get('email').errors?.required &&
-          registerForm.get('email').errors?.email
-        }"
-        type="text"
-        formControlName="email"
-      />
-      <ng-container *ngIf="registerForm.get('email').touched">
-        <div *ngIf="registerForm.get('email').errors?.required">{{ 'error.required' | translate }}</div>
-        <div *ngIf="registerForm.get('username').errors?.email">{{ 'error.email' | translate }}</div>
-      </ng-container>
-    </div>
+  <div class="e-pal-auth-modal_form_input">
+    <span>{{ 'general.email' | translate }}</span>
+    <input
+      [ngClass]="{ invalid: 
+        registerForm.get('email').touched &&
+        registerForm.get('email').errors?.required &&
+        registerForm.get('email').errors?.email
+      }"
+      type="text"
+      formControlName="email"
+    />
+    <ng-container *ngIf="registerForm.get('email').touched">
+      <div class="input-invalid-msg" *ngIf="registerForm.get('email').errors?.required">{{ 'error.required' | translate }}</div>
+      <div class="input-invalid-msg" *ngIf="registerForm.get('email').errors?.email">{{ 'error.email' | translate }}</div>
+    </ng-container>
+  </div>
 
-    <div>
-      <div>{{ 'general.birthday' | translate }}</div>
-      <input
-        [ngClass]="{ invalid: 
-          registerForm.get('birthday').touched &&
-          registerForm.get('birthday').errors?.required
-        }"
-        type="date"
-        formControlName="birthday"
-      />
-      <ng-container *ngIf="registerForm.get('birthday').touched">
-        <div *ngIf="registerForm.get('birthday').errors?.required">{{ 'error.required' | translate }}</div>
-      </ng-container>
-    </div>
+  <div class="e-pal-auth-modal_form_input">
+    <span>{{ 'general.birthday' | translate }}</span>
+    <input
+      [ngClass]="{ invalid: 
+        registerForm.get('birthday').touched &&
+        registerForm.get('birthday').errors?.required
+      }"
+      type="date"
+      formControlName="birthday"
+    />
+    <ng-container *ngIf="registerForm.get('birthday').touched">
+      <div class="input-invalid-msg" *ngIf="registerForm.get('birthday').errors?.required">{{ 'error.required' | translate }}</div>
+    </ng-container>
+  </div>
 
-    <button>{{ 'general.register' | translate }}</button>
-  </form>
-</div>
+  <button class="e-pal-auth-submit-button" (click)="submit()">{{ 'general.register' | translate }}</button>
+</form>

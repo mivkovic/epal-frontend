@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { AuthService } from '../../../shared/services/auth.service';
 import { ModalService } from '../../../shared/services/modal.service';
 
@@ -41,6 +41,8 @@ export class LoginComponent {
 
   public submit() {
     if (!this.loginForm.valid) {
+      this.validateAllFormFields(this.loginForm);
+      
       return;
     }
 
@@ -51,5 +53,16 @@ export class LoginComponent {
       }).catch(err => {
         this.error = err;
       });
+  }
+
+  public validateAllFormFields(formGroup) {
+    Object.keys(formGroup.controls).forEach(field => {
+      const control = formGroup.get(field);
+      if (control instanceof FormControl) {
+        control.markAsTouched({ onlySelf: true });
+      } else if (control instanceof FormGroup) {
+        this.validateAllFormFields(control);
+      }
+    });
   }
 }

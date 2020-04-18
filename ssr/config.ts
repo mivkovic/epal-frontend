@@ -6,4 +6,4 @@ module.exports = {
     db: 1,
     expiration: 86400 // 1 day
   }
-}
+};

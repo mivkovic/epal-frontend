@@ -170,6 +170,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "epal-frontend"
+    }
+  },
+  "defaultProject": "epal-frontend",
+  "cli": {
+    "analytics": "3e723303-b833-408d-86fa-039dde774249"
+  }
 }

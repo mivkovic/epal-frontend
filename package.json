@@ -12,7 +12,16 @@
     "dev:ssr": "ng run epal-frontend:serve-ssr",
     "serve:ssr": "node dist/epal-frontend/server/main.js",
     "build:ssr": "ng build --prod && ng run epal-frontend:server:production",
-    "prerender": "ng run epal-frontend:prerender"
+    "prerender": "ng run epal-frontend:prerender",
+    "check": "tslint -c tslint.json 'src/**/*.ts'",
+    "fix": "tslint --fix"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run check",
+      "pre-push": "npm run check",
+      "pre-add": "npm run check"
+    }
   },
   "private": true,
   "dependencies": {
@@ -27,6 +36,7 @@
     "@angular/router": "~9.1.1",
     "@nguniversal/express-engine": "^9.1.0",
     "express": "^4.15.2",
+    "husky": "^4.2.5",
     "mobile-detect": "^1.4.4",
     "redis": "^3.0.2",
     "rxjs": "~6.5.4",
@@ -53,7 +63,7 @@
     "karma-jasmine-html-reporter": "^1.4.2",
     "protractor": "~5.4.3",
     "ts-node": "~8.3.0",
-    "tslint": "~6.1.0",
+    "tslint": "^6.1.1",
     "typescript": "~3.8.3"
   }
 }

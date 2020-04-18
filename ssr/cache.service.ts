@@ -43,7 +43,7 @@ const deleteCache = (callback) => {
   }
 
   client.flushall();
-}
+};
 
 const handleNotConnectedYet = (callback) => {
   if (typeof callback === 'function') {
@@ -52,8 +52,8 @@ const handleNotConnectedYet = (callback) => {
 };
 
 module.exports = {
-  connect: connect,
-  set: set,
-  get: get,
-  deleteCache: deleteCache
-}
+  connect,
+  set,
+  get,
+  deleteCache
+};

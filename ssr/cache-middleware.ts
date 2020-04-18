@@ -1,5 +1,5 @@
 const CacheService = require('./cache.service');
-import * as MobileDetect from "mobile-detect";
+import * as MobileDetect from 'mobile-detect';
 CacheService.connect();
 
 export const cacheMiddleware = (req, res, next) => {
